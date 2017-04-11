@@ -69,7 +69,7 @@ public class JSONEventSource implements EventSource {
 		oos.writeUTF(json);
 	}
 
-	public void close() {
+	public void close(){
 		try {
 			if (socket != null)
 				socket.close();

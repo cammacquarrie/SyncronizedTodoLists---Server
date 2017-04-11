@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class List implements Serializable{
 	private ArrayList<Item> items;
 	private ArrayList<User> users;
-	private User admin;
+	private String admin;
 	private String name;
 	private int id;
 	
@@ -51,11 +51,11 @@ public class List implements Serializable{
 		return false;
 	}
 
-	public User getAdmin() {
+	public String getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(User admin) {
+	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
 }

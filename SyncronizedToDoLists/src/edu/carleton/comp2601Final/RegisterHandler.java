@@ -7,18 +7,21 @@ import java.util.HashMap;
 import edu.carleton.COMP2601.communication.Event;
 import edu.carleton.COMP2601.communication.EventHandler;
 import edu.carleton.COMP2601.communication.Fields;
-import com.google.gson.*;
 
-public class LoginHandler implements EventHandler{
+public class RegisterHandler implements EventHandler{
 
 	@Override
 	public void handleEvent(Event event) {
-		//verify user
 		String username = (String) event.get(Fields.USERNAME);
 		String password = (String) event.get(Fields.PASSWORD);
-		User user = Server.verifyUser(username, password);
-		//if verified, add to active client list and send response
-		if(user != null){
+		String display = (String) event.get(Fields.DISPLAY);
+		if(display.isEmpty()){
+			display = "-";
+		}
+
+		boolean added = Server.addUser(username, display, password);
+		if(added){
+			User user = Server.verifyUser(username, password);
 			Server.clients.put(event.getSource(), user);
 			HashMap<String, Serializable> map = new HashMap<String, Serializable>();
 			map.put(Fields.TYPE, Fields.LOGIN_RES);
@@ -32,11 +35,11 @@ public class LoginHandler implements EventHandler{
 				e.printStackTrace();
 			}
 		}
-		//if not verified send negative response and close connection
 		else{
 			HashMap<String, Serializable> map = new HashMap<String, Serializable>();
-			map.put(Fields.TYPE, Fields.LOGIN_RES);
+			map.put(Fields.TYPE, Fields.REGISTER);
 			map.put(Fields.VALUE, false);
+			map.put(Fields.REASON, "That username is already taken");
 			Event evt = new Event(event.getSource(), map);
 			try {
 				event.putEvent(evt);

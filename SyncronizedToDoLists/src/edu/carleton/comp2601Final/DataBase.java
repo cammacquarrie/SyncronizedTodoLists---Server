@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class DataBase {
 	private static final String INSERT_ITEM = "INSERT INTO  items (title, description, created_by, complete, listid, points) VALUES ";
 	private static final String INSERT_USER = "INSERT INTO  users (username, displayname, password) VALUES ";
-	private static final String INSERT_LIST = "INSERT INTO  lists (Title, admin) VALUES ";
-	private static final String INSERT_ASSIGNED = "INSERT INTO  assigned (userid, itemid) VALUES";
-	private static final String INSERT_USER_LIST = "INSERT INTO  lists (userid, listid) VALUES";
+	private static final String INSERT_LIST = "INSERT INTO  lists (name, admin) VALUES ";
+	private static final String INSERT_ASSIGNED = "INSERT INTO  assigned (user, itemid) VALUES";
+	private static final String INSERT_USER_LIST = "INSERT INTO  user_list (listid, user) VALUES";
 	private static final String INSERT_INVITE = "INSERT INTO  invites (listid, sender, receiver) VALUES";
 	private static final String QUERY_USER = "SELECT * FROM users ";
 	private static final String QUERY_LIST = "SELECT * FROM lists ";
@@ -95,7 +95,7 @@ public class DataBase {
 		System.out.println("list inserted");
 		ResultSet rs = statement.getGeneratedKeys();
 		rs.next();
-		int id = rs.getInt("id");
+		int id = rs.getInt(1);
 		addUserToList(id, admin);
 	}
 
@@ -104,16 +104,18 @@ public class DataBase {
 	 */
 	//query for lists that a user belongs to
 	public ArrayList<List> queryListsForUser(String username) throws SQLException {
-		String query = " l JOIN user_list u ON l.id = u.listid WHERE u.user = \"" + username + "\"";
+		String query = "l JOIN user_list u ON l.id = u.listid WHERE u.user = \"" + username + "\"";
 		Statement statement = connection.createStatement();
+		System.out.print(QUERY_LIST + query);
 		ResultSet results = statement.executeQuery(QUERY_LIST + query);
 		ArrayList<List> lists = new ArrayList<List>();
 		while (results.next()) {
+			System.out.println("found list for user");
 			int id = results.getInt("id");
 			String name = results.getString("name");
 			String admin = results.getString("admin");
 			List list = new List(name, id);
-			list.setAdmin(queryUser(admin));
+			list.setAdmin(queryUser(admin).getUserName());
 			list.setItems(queryItemsForList(list.getId()));
 			list.setUsers(queryUsersForList(id));
 			lists.add(list);
@@ -122,7 +124,7 @@ public class DataBase {
 	}
 	//query for users belonging to a list
 	public ArrayList<User> queryUsersForList(int id) throws SQLException{
-		String query = " u JOIN user_list l ON u.username = l.user WHERE l.id = "+ id;
+		String query = " u JOIN user_list l ON u.username = l.user WHERE l.listid = "+ id;
 		Statement statement = connection.createStatement();
 		ResultSet results = statement.executeQuery(QUERY_USER + query);
 		ArrayList<User> users = new ArrayList<User>();
@@ -184,7 +186,7 @@ public class DataBase {
 	public void insertAssigned(int itemid, String user) throws SQLException{
 		String update = "(" + itemid + ",\"" + user + "\")";
 		Statement statement = connection.createStatement();
-		statement.executeUpdate(INSERT_USER_LIST + update);
+		statement.executeUpdate(INSERT_ASSIGNED + update);
 		System.out.println("user inserted");
 	}
 	

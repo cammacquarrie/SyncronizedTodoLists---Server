@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.carleton.COMP2601.communication.EventHandler;
 import edu.carleton.COMP2601.communication.EventSource;
 import edu.carleton.COMP2601.communication.Fields;
 import edu.carleton.COMP2601.communication.JSONEventSource;
@@ -37,7 +38,10 @@ public class Server {
 			clients.put(source, null);
 			// register handlers with reactor here
 			reactor.register(Fields.LOGIN, new LoginHandler());
+			reactor.register(Fields.REGISTER, new RegisterHandler());
+			reactor.register(Fields.NEW_LIST, new NewListHandler());
 			//////
+			
 			ThreadWithReactor thread = new ThreadWithReactor(source, reactor);
 			thread.start();
 		}
@@ -48,10 +52,27 @@ public class Server {
 		try {
 			user = db.queryVeryifyUser(username, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+	public static void addList(List list){
+		try {
+			db.insertList(list.getName(), list.getAdmin());
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static boolean  addUser(String username, String display, String password){
+		try {
+			db.insertUser(username, display, password);
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public void print(String str) {

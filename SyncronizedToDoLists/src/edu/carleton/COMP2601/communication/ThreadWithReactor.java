@@ -30,7 +30,12 @@ public class ThreadWithReactor extends Thread implements ReactorInterface {
 			Event event;
 			try {
 				System.out.println("Getting event");
-				event = source.getEvent();
+				if(source != null)
+					event = source.getEvent();
+				else{
+					running = false;
+					break;
+				}
 				System.out.println("Event got");
 				if (event != null) {
 					System.out.println("in");

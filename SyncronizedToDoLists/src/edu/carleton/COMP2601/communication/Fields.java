@@ -23,4 +23,8 @@ public class Fields {
 	public static final String COMPLETED = "COMPLETED";
 	public static final String SENDER = "SENDER";
 	public static final String RECEIVER = "RECEIVER";
+	public static final String NEW_LIST = "NEW_LIST";
+	public static final String LIST = "LIST";
+	public static final String REGISTER = "REGISTER";
+	public static final String REASON = "REASON";
 }
