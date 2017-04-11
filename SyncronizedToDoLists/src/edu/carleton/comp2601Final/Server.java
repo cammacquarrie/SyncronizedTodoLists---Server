@@ -40,6 +40,7 @@ public class Server {
 			reactor.register(Fields.LOGIN, new LoginHandler());
 			reactor.register(Fields.REGISTER, new RegisterHandler());
 			reactor.register(Fields.NEW_LIST, new NewListHandler());
+			reactor.register(Fields.NEW_ITEM, new NewItemHandler());
 			//////
 			
 			ThreadWithReactor thread = new ThreadWithReactor(source, reactor);
@@ -59,9 +60,18 @@ public class Server {
 	
 	public static void addList(List list){
 		try {
-			db.insertList(list.getName(), list.getAdmin());
+			db.insertLidst(list.getName(), list.getAdmin());
 		} catch (SQLException e) {
 			
+			e.printStackTrace();
+		}
+	}
+
+	public static void addItem(Item item){
+		try {
+			db.insertItem(item.getName(), item.getCreatedBy(), item.getListID());
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
 	}

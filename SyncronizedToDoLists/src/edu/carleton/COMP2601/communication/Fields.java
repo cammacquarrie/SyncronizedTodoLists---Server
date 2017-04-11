@@ -27,4 +27,5 @@ public class Fields {
 	public static final String LIST = "LIST";
 	public static final String REGISTER = "REGISTER";
 	public static final String REASON = "REASON";
+	public static final String NEW_ITEM = "NEW_ITEM";
 }

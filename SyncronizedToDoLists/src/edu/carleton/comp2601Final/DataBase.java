@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DataBase {
-	private static final String INSERT_ITEM = "INSERT INTO  items (title, description, created_by, complete, listid, points) VALUES ";
+	private static final String INSERT_ITEM = "INSERT INTO  items (title, created_by, complete, listid, points) VALUES ";
 	private static final String INSERT_USER = "INSERT INTO  users (username, displayname, password) VALUES ";
 	private static final String INSERT_LIST = "INSERT INTO  lists (name, admin) VALUES ";
 	private static final String INSERT_ASSIGNED = "INSERT INTO  assigned (user, itemid) VALUES";
@@ -163,7 +163,6 @@ public class DataBase {
 			int id = results.getInt("id");
 			String title = results.getString("title");
 			String created = results.getString("created_by");
-			String desc = results.getString("description");
 			int list = results.getInt("listid");
 			items.add(new Item(id, title, desc, created, list));
 		}
@@ -211,7 +210,7 @@ public class DataBase {
 		return items;
 	}
 	public void insertItem(Item item) throws SQLException{
-		insertItem(item.getTitle(), item.getDescription(), item.getCreatedBy(), item.isCompleted(), item.getListID());
+		insertItem(item.getTitle(), item.getCreatedBy(), false, item.getListID());
 	}
 	public void insertItem(String title, String description, String created_by, boolean complete, int listid) throws SQLException{
 		String update = "(\"" + title + "\",\"" + description + "\",\"" + created_by + "\",\"" + complete + "\"," + listid + "," + 0+")";
