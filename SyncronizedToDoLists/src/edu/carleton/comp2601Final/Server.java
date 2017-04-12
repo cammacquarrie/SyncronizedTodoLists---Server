@@ -41,6 +41,7 @@ public class Server {
 			reactor.register(Fields.REGISTER, new RegisterHandler());
 			reactor.register(Fields.NEW_LIST, new NewListHandler());
 			reactor.register(Fields.NEW_ITEM, new NewItemHandler());
+			reactor.register(Fields.NEW_INVITE, new NewInviteHandler());
 			//////
 			
 			ThreadWithReactor thread = new ThreadWithReactor(source, reactor);
@@ -70,6 +71,15 @@ public class Server {
 	public static void addItem(Item item){
 		try {
 			db.insertItem(item.getName(), item.getCreatedBy(), item.getListID());
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	public static void addInvite(int listid, String sender, String receiver){
+		try {
+			db.insertItem(listid, sender, reciever);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
