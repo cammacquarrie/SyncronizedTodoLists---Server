@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82e8d283-52ce-4d33-9372-e5ad8597c90a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/NewInviteHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/NewItemHandler.java" afterPath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/NewItemHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/Server.java" afterPath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java" afterPath="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java" />
     </list>
     <ignored path="SyncronizedTodoLists---Server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,17 +23,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Fields.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Fields.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+            <state relative-caret-position="459">
+              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/Server.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
@@ -138,11 +136,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java" />
         <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/DataBase.java" />
         <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/NewItemHandler.java" />
         <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/Server.java" />
         <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/NewInviteHandler.java" />
+        <option value="$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java" />
       </list>
     </option>
   </component>
@@ -659,14 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="53" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/comp2601Final/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -735,6 +725,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncronizedToDoLists/src/edu/carleton/COMP2601/communication/Fields.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
           <folding />
         </state>
       </provider>
